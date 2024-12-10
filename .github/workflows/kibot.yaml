@@ -1,0 +1,32 @@
+name: kibot
+
+on:
+  push:
+    paths:
+    - '.github/workflows/kibot.yaml'
+    - 'kibot.yaml'
+    - '**.kicad_sch'
+    - '**.kicad_pcb'
+
+jobs:
+  kibot:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Blender render
+      run: |
+        kibot -c kibot.yaml \
+        -b bike-rear-light/bike-rear-light.kicad_pcb \
+        -e bike-rear-light/bike-rear-light.kicad_sch 
+
+        mogrify -format webp build/renders/*.png
+        cp build/renders/*.webp assets
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: 'Update renders'
+        add: 'assets'
