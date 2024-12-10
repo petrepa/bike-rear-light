@@ -19,8 +19,8 @@ jobs:
     - name: Blender render
       run: |
         kibot -c kibot.yaml \
-        -b bike-rear-light/bike-rear-light.kicad_pcb \
-        -e bike-rear-light/bike-rear-light.kicad_sch 
+        -b bike-rear-light.kicad_pcb \
+        -e bike-rear-light.kicad_sch 
 
         mogrify -format webp build/renders/*.png
         cp build/renders/*.webp assets
