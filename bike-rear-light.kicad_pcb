@@ -320,7 +320,7 @@
 	(footprint "easyeda2kicad:CONN-TH_XT30PW-F-1"
 		(layer "F.Cu")
 		(uuid "0c8b5766-474a-49f7-baf4-ae3ea2a0d0c1")
-		(at 86.9 76.3)
+		(at 89 71.7625)
 		(property "Reference" "U1"
 			(at 0 -6.5 0)
 			(layer "F.SilkS")
